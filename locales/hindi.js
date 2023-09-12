@@ -1,7 +1,7 @@
 export default {
   welcomeMessage: 'सुपरमैक्स में आपका स्वागत है',
-  mPro: 'एम प्रो',
+  mPro: 'वायमो',
   mPower: 'एम पॉवर',
   mQuote: 'एम कोट',
-  maxlifeLite: 'मैक्सलाइफ लाइट',
+  maxlifeLite: 'एमएलओ',
 };

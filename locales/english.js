@@ -1,7 +1,7 @@
 export default {
   welcomeMessage: 'Welcome To The SuperMAX',
-  mPro: 'mPro',
+  mPro: 'VYMO',
   mPower: 'mPower',
   mQuote: 'mQuote',
-  maxlifeLite: 'MAXLIFE_LITE',
+  maxlifeLite: 'MLO',
 };

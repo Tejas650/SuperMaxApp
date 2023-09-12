@@ -19,13 +19,13 @@ const Home = ({route}) => {
     {
       id: 1,
       title: `${I18n.t('mPro')}`,
-      image: require('../../../assets/mPro.png'),
-      webviewUrl: 'https://mpro.maxlifeinsurance.com/',
+      image: require('../../../assets/mpro1.png'),
+      webviewUrl: 'https://staging.lms.getvymo.com/#/login',
     },
     {
       id: 2,
       title: `${I18n.t('mPower')}`,
-      image: require('../../../assets/mPower.png'),
+      image: require('../../../assets/mpower.png'),
       webviewUrl: 'https://www.mpowerfinancing.com/',
     },
     {
@@ -39,7 +39,7 @@ const Home = ({route}) => {
     {
       id: 4,
       title: `${I18n.t('maxlifeLite')}`,
-      image: require('../../../assets/maxlife_lite.png'),
+      image: require('../../../assets/maxlife_lite1.png'),
       webviewUrl: '',
     },
   ];
@@ -70,15 +70,16 @@ const Home = ({route}) => {
           title: item.title,
           url: item.webviewUrl,
         });
-      } else if (item.title === 'MAXLIFE_LITE') {
-        const appPackageName = 'com.demo';
+      } else if (item.title === 'MLO') {
+        const appPackageName = 'com.pushnotification';
 
         console.log('app open', appPackageName);
 
         Linking.canOpenURL(appPackageName)
           .then(supported => {
             console.log('appInstalled', supported);
-            if (supported) {
+            if (!supported) {
+              console.log('appOpenNew', supported);
               return Linking.openURL(appPackageName);
             } else {
               console.log(
