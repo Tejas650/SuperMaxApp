@@ -63,6 +63,8 @@ const Home = ({route}) => {
     }
   };
 
+  // 'mychat://www.example.com/ionicdemo/Hi This is demo for the Ionic application, for the deeplinkinking via max application';
+
   const renderItem = ({item}) => {
     const handlePress = async () => {
       if (item.webviewUrl) {
@@ -71,26 +73,26 @@ const Home = ({route}) => {
           url: item.webviewUrl,
         });
       } else if (item.title === 'MLO') {
-        const appPackageName = 'com.pushnotification';
+        const appPackageName = 'app://mysupermax/Login';
 
         console.log('app open', appPackageName);
 
-        Linking.canOpenURL(appPackageName)
-          .then(supported => {
-            console.log('appInstalled', supported);
-            if (!supported) {
-              console.log('appOpenNew', supported);
-              return Linking.openURL(appPackageName);
-            } else {
-              console.log(
-                'App is not installed. Redirecting to the Play Store...',
-              );
-              const storePackageName =
-                'https://play.google.com/store/apps/details?id=com.maxlifeinsurance.www.twa';
-              return Linking.openURL(storePackageName);
+        await Linking.openURL(appPackageName)
+          .then(async supported => {
+            if (supported) {
+              console.log('appInstalled', supported);
+              await Linking.openURL(appPackageName);
             }
           })
-          .catch(error => console.error('Error opening the app: ', error));
+          .catch(err => {
+            // console.error('An error occurred ', err));
+            console.log(
+              'App is not installed. Redirecting to the Play Store...',
+            );
+            const storePackageName =
+              'https://play.google.com/store/apps/details?id=com.maxlifeinsurance.www.twa';
+            Linking.openURL(storePackageName);
+          });
       }
     };
 
